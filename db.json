@@ -1,0 +1,11 @@
+{
+    "posts": [
+      { "id": 1, "title": "json-server", "author": "typicode" },
+      { "id": 2, "title": "Veli-Matti's post title", "author": "Veli-Matti Kananen" }
+    ],
+    "comments": [
+      { "id": 1, "color": "red", "body": "some comment", "postId": 1 },
+      { "id": 2, "color": "blue", "body": "another comment", "postId": 1 }
+    ],
+    "profile": { "name": "typicode" }
+  }

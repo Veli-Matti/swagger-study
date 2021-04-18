@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+  app:
+    image: swaggerapi/swagger-ui
+    ports:
+      - 8080:8080
+    volumes:
+      - ./data/:/openapi/data/
+    environment:
+      SWAGGER_JSON: /openapi/data/openapi.yml
+      DEFAULT_MODELS_EXPAND_DEPTH: -1
+      

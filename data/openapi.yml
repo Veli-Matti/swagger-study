@@ -1,0 +1,77 @@
+openapi: 3.0.0
+info:
+  title: Sample API
+  description: Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML.
+  version: 0.1.9
+servers:
+  - url: http://localhost:3000
+    description: My local json server
+  - url: http://staging-api.example.com
+    description: Optional server description, e.g. Internal staging server for testing
+paths:
+  /posts:
+    get:
+      summary: Returns a list of posts.
+      description: Optional extended description in CommonMark or HTML.
+      responses:
+        '200':    # status code
+          description: A JSON array of posts
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  $ref: '#/components/schemas/Post'
+  /posts/{id}:
+    get:
+      summary: Returns a post.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Optional id for fetching a post
+          schema:
+            type: integer
+            minimum: 1
+      description: Optional extended description in CommonMark or HTML.
+      responses:
+        '200':    # status code
+          description: One object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+  /comments:
+    get:
+      summary: Returns a comment.
+      parameters:
+        - in: query
+          name: color
+          description: Search filter
+          schema:
+            type: string
+            enum: [red, green, blue]
+            #$ref: '#/components/schemas/ColorFilter'
+      description: Optional extended description in CommonMark or HTML.
+      responses:
+        '200':    # status code
+          description: One object
+components:
+  schemas:
+    Post:
+      type: object
+      properties: 
+        id:
+          type: integer
+        title:
+          type: string
+        author:
+          type: string
+    ColorFilter:
+      type: string
+      enum:
+        - black
+        - white
+        - red
+        - green
+        - blue
