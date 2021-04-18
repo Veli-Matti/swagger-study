@@ -1,6 +1,5 @@
 # swagger-study
 A minor OpenAPI3 -study
-## Dependencies
-json-server as a API server
-TODO
-Add json-sever image in docker-compose
+## Setup
+- Run: 'docker compose up'
+- Open browser: 'http://localhost:8080'
