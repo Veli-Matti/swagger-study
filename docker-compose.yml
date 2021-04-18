@@ -6,8 +6,15 @@ services:
     ports:
       - 8080:8080
     volumes:
-      - ./data/:/openapi/data/
+      - ./data/oa3:/oa3/data/
     environment:
-      SWAGGER_JSON: /openapi/data/openapi.yml
+      SWAGGER_JSON: /oa3/data/openapi.yml
       DEFAULT_MODELS_EXPAND_DEPTH: -1
-      
+  json-server:
+    image: vimagick/json-server
+    command: -H 0.0.0.0 -p 3000 -w /data/db.json
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data/json-server:/data
+    restart: always
